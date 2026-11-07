@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  solr:
+    image: docker.io/solr:10.0.0
+    container_name: solr-server
+    ports:
+      - "8983:8983"
+    volumes:
+      - ./solrdata:/var/solr:Z
+
+    environment:
+      - SOLR_JAVA_MEM=-Xms512m -Xmx1024m  
+    command: ["solr-foreground", "--user-managed"]  
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8983/solr/"]
+      interval: 10s
+      timeout: 5s
+      retries: 3

@@ -1,0 +1,16 @@
+name: suma-tech
+channels:
+- conda-forge
+- defaults
+dependencies:
+- bs4
+- matplotlib
+- nltk
+- pandas
+- python=3.13
+- pyyaml
+- requests
+- seaborn
+- ipykernel
+- jupyter
+- pysolr
