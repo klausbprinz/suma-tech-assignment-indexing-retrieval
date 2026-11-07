@@ -1,5 +1,6 @@
 # Specific for this repo
 data/pg-metadata
+data/assignment-data/fulltexts
 solrdata
 
 
