@@ -44,21 +44,69 @@ if __name__ == "__main__":
         print(f"Die Datei 'ebook_ids' wurde nicht gefunden. Bitte passen Sie den Pfad an.")
         exit(1)
 
+    overallFilesToLoad = []
+
+    filesAlreadyLoaded = []
+    filesNotLoaded = []
+
+    filesEmpty = []
+
+    filesLoadedNew = []
+    filesErrorsNew = []
+
     num_of_downloads = 0
     num_of_errors = 0
 
-    print(f"Verarbeite Datei {EBOOK_ID_PATH}")
+    print(f"Verarbeite Datei {EBOOK_ID_PATH}. Lade E-Book-IDs.")
 
 
     with open(EBOOK_ID_PATH, "r", encoding="utf-8") as file:
-        for ebookid in file:
-            ebookid = ebookid.strip()   # get rid of "\n"     
-            url = f"https://www.gutenberg.org/ebooks/{ebookid}.txt.utf-8"
-            print(f"Herunterladen der Textdatei von {url}")
-            output_file = FULLTEXT_PATH / f"{ebookid}.txt"
-            if download_file(url, output_file):
-                num_of_downloads += 1
-            else:
-                num_of_errors += 1
+        overallFilesToLoad = [line.strip() for line in file if line.strip()]
+
+    print(f"Insgesamt {len(overallFilesToLoad)} E-Book-IDs gefunden.")
+
+    # print("Checke, welche schon geladen wurden (Datei vorhanden).")
+
+    filesAlreadyLoaded = [file.stem for file in FULLTEXT_PATH.glob("*.txt") if not file.name.endswith("_filtered.txt")]
+
+    print(f"{len(filesAlreadyLoaded)} Dateien wurden bereits geladen.")
+
+    # print("Checke, welche noch nicht geladen wurden (Datei nicht vorhanden).")
+
+    filesNotLoaded = list(set(overallFilesToLoad) - set(filesAlreadyLoaded))
+
+    print(f"{len(filesNotLoaded)} E-Book-ID(s) wurden noch nicht geladen. IDs: {filesNotLoaded}")
+
+    # print("Checke, ob geladene Dateien leer sind.")
+
+    # this is slow!
+    # for ebookFile in FULLTEXT_PATH.glob("*.txt"):
+    #     with open(ebookFile) as ef:
+    #         if not ef.read():
+    #             filesEmpty.append(ebookFile.name.replace(".txt", ""))
+
+    # for a faster way:
+    for ebookFile in FULLTEXT_PATH.glob("*.txt"):
+        if ebookFile.stat().st_size == 0:       # fetch metadata about file and read relevant property
+            filesEmpty.append(ebookFile.stem)
+
+    print(f"{len(filesEmpty)} leere Dateien wurden gefunden. IDs: {filesEmpty}")
+
+    filesNotLoaded.extend(filesEmpty)
+
+    # load missing
+    for ebookid in filesNotLoaded:
+  
+        url = f"https://www.gutenberg.org/ebooks/{ebookid}.txt.utf-8"
+        print(f"Herunterladen der Textdatei von {url}")
+        output_file = FULLTEXT_PATH / f"{ebookid}.txt"
+        if download_file(url, output_file):
+            num_of_downloads += 1
+            filesLoadedNew.append(ebookid)
+        else:
+            num_of_errors += 1
+            filesErrorsNew.append(ebookid)
 
     print(f"Insgesamt {num_of_downloads} Volltextdateien erfolgreich heruntergeladen (Anzahl Fehler: {num_of_errors}).")
+    print(f"Geladene IDs: {filesLoadedNew}.")
+    print(f"IDs mit Fehlern beim Laden: {filesErrorsNew}")

@@ -36,5 +36,74 @@ Use cursorMark in search() of PySolr - otherwise PySolr gets kind of confused wi
 ## Comments on 02_fetch-works.py
 Script Output
 ```
-
+Insgesamt 2435 Volltextdateien erfolgreich heruntergeladen (Anzahl Fehler: 20).
 ```
+
+He who reads the assignment in total ...
+
+(base) k@Ixion:~/Dev/learning/bibinfo-suchmaschinentechnologie/suma-tech-assignment-indexing-retrieval/scripts/assignment$ python 02_fetch-works.py 
+Verarbeite Datei /home/k/Dev/learning/bibinfo-suchmaschinentechnologie/suma-tech-assignment-indexing-retrieval/data/assignment-data/ebook_ids.txt. Lade E-Book-IDs.
+Insgesamt 2455 E-Book-IDs gefunden.
+2435 Dateien wurden bereits geladen.
+20 E-Book-ID(s) wurden noch nicht geladen. IDs: ['38157', '15267', '25157', '31911', '36310', '29806', '33317', '32634', '30005', '11925', '33330', '33202', '29780', '32766', '5740', '38986', '34032', '31564', '33369', '17153']
+0 leere Dateien wurden gefunden. IDs: []
+Herunterladen der Textdatei von https://www.gutenberg.org/ebooks/38157.txt.utf-8
+Fehler beim Herunterladen der Datei von URL https://www.gutenberg.org/ebooks/38157.txt.utf-8: 404
+Herunterladen der Textdatei von https://www.gutenberg.org/ebooks/15267.txt.utf-8
+Fehler beim Herunterladen der Datei von URL https://www.gutenberg.org/ebooks/15267.txt.utf-8: 404
+Herunterladen der Textdatei von https://www.gutenberg.org/ebooks/25157.txt.utf-8
+Fehler beim Herunterladen der Datei von URL https://www.gutenberg.org/ebooks/25157.txt.utf-8: 404
+Herunterladen der Textdatei von https://www.gutenberg.org/ebooks/31911.txt.utf-8
+Fehler beim Herunterladen der Datei von URL https://www.gutenberg.org/ebooks/31911.txt.utf-8: 404
+Herunterladen der Textdatei von https://www.gutenberg.org/ebooks/36310.txt.utf-8
+Fehler beim Herunterladen der Datei von URL https://www.gutenberg.org/ebooks/36310.txt.utf-8: 404
+Herunterladen der Textdatei von https://www.gutenberg.org/ebooks/29806.txt.utf-8
+Fehler beim Herunterladen der Datei von URL https://www.gutenberg.org/ebooks/29806.txt.utf-8: 404
+Herunterladen der Textdatei von https://www.gutenberg.org/ebooks/33317.txt.utf-8
+Fehler beim Herunterladen der Datei von URL https://www.gutenberg.org/ebooks/33317.txt.utf-8: 404
+Herunterladen der Textdatei von https://www.gutenberg.org/ebooks/32634.txt.utf-8
+Fehler beim Herunterladen der Datei von URL https://www.gutenberg.org/ebooks/32634.txt.utf-8: 404
+Herunterladen der Textdatei von https://www.gutenberg.org/ebooks/30005.txt.utf-8
+Fehler beim Herunterladen der Datei von URL https://www.gutenberg.org/ebooks/30005.txt.utf-8: 404
+Herunterladen der Textdatei von https://www.gutenberg.org/ebooks/11925.txt.utf-8
+Fehler beim Herunterladen der Datei von URL https://www.gutenberg.org/ebooks/11925.txt.utf-8: 404
+Herunterladen der Textdatei von https://www.gutenberg.org/ebooks/33330.txt.utf-8
+Fehler beim Herunterladen der Datei von URL https://www.gutenberg.org/ebooks/33330.txt.utf-8: 404
+Herunterladen der Textdatei von https://www.gutenberg.org/ebooks/33202.txt.utf-8
+Fehler beim Herunterladen der Datei von URL https://www.gutenberg.org/ebooks/33202.txt.utf-8: 404
+Herunterladen der Textdatei von https://www.gutenberg.org/ebooks/29780.txt.utf-8
+Fehler beim Herunterladen der Datei von URL https://www.gutenberg.org/ebooks/29780.txt.utf-8: 404
+Herunterladen der Textdatei von https://www.gutenberg.org/ebooks/32766.txt.utf-8
+Fehler beim Herunterladen der Datei von URL https://www.gutenberg.org/ebooks/32766.txt.utf-8: 404
+Herunterladen der Textdatei von https://www.gutenberg.org/ebooks/5740.txt.utf-8
+Fehler beim Herunterladen der Datei von URL https://www.gutenberg.org/ebooks/5740.txt.utf-8: 404
+Herunterladen der Textdatei von https://www.gutenberg.org/ebooks/38986.txt.utf-8
+Fehler beim Herunterladen der Datei von URL https://www.gutenberg.org/ebooks/38986.txt.utf-8: 404
+Herunterladen der Textdatei von https://www.gutenberg.org/ebooks/34032.txt.utf-8
+Fehler beim Herunterladen der Datei von URL https://www.gutenberg.org/ebooks/34032.txt.utf-8: 404
+Herunterladen der Textdatei von https://www.gutenberg.org/ebooks/31564.txt.utf-8
+Fehler beim Herunterladen der Datei von URL https://www.gutenberg.org/ebooks/31564.txt.utf-8: 404
+Herunterladen der Textdatei von https://www.gutenberg.org/ebooks/33369.txt.utf-8
+Fehler beim Herunterladen der Datei von URL https://www.gutenberg.org/ebooks/33369.txt.utf-8: 404
+Herunterladen der Textdatei von https://www.gutenberg.org/ebooks/17153.txt.utf-8
+Fehler beim Herunterladen der Datei von URL https://www.gutenberg.org/ebooks/17153.txt.utf-8: 404
+Insgesamt 0 Volltextdateien erfolgreich heruntergeladen (Anzahl Fehler: 20).
+Geladene IDs: [].
+IDs mit Fehlern beim Laden: ['38157', '15267', '25157', '31911', '36310', '29806', '33317', '32634', '30005', '11925', '33330', '33202', '29780', '32766', '5740', '38986', '34032', '31564', '33369', '17153']
+
+
+It works but can be done better - check for empty file directly after loading it
+
+---
+
+## Comments on 03_remove-header-footer.py
+
+Script Output
+```
+Skript beendet.
+2435 Dateien erfolgreich bereinigt.
+0 Dateien ohne gültige Start- und End-Marker. IDs: []
+```
+
+## Comments on 04_
+
