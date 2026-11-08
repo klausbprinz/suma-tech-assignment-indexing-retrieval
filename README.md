@@ -4,12 +4,12 @@ author: "Klaus Prinz"
 domain: "learning"
 status: "active"
 createdDate: "2026-11-07"
-tags: [solr, solr schema, pysolr, project gutenberg, ]      # TODO
+tags: [solr, solr schema, pysolr, project gutenberg, information retrieval, edismax, morelikethis, mlt, faceting, podman, podman-compose]
 requester: ""
 ticketId: ""
 ---
 
-# suma-tech-assignment-harvesting-analysis
+# suma-tech-assignment-indexing-retrieval
 
 > **Quick Summary:** Suma-tech assignment two. See `docs/assignment/README.md`.
 
@@ -20,7 +20,7 @@ ticketId: ""
 1. **Environment:** Ensure you are using the `suma-tech` Conda environment (to create run `conda env create -f environment.yaml`).
 2. **Setup:** Not needed.
 3. **Inputs:** Not needed.
-4. **Execution:** Run scripts in `scripts/` sequentially.
+4. **Execution:** First run scripts in `scripts/preparation`, then run scripts in `scripts/assignment` sequentially.
 
 ---
 
@@ -30,6 +30,7 @@ mkdir -p solrdata
 podman unshare chown -R 8983:8983 solrdata
 podman-compose up -d
 ```
+
 *(Verify Solr is running by opening http://localhost:8983 in your browser).*
 
 ---
@@ -52,21 +53,26 @@ To grant your host user read and execute permissions without breaking container 
 podman unshare chmod -R o+rX solrdata
 ```
 
+Or use this
+```bash
+podman unshare chmod -R 777 solrdata
+```
+
 ## Context & Objectives
-Suma-tech assignment two. See `docs/assignment/README.md`.
+This repository contains the implementation deliverables for **Suma-Tech Assignment 2** (Project Gutenberg Search Pipeline).
+All runnable **assignment deliverables and implementation scripts** are located in the `scripts/assignment/` directory. For deep-dive assignment requirements, refer to `docs/assignment/README.md`.
 
 ---
 
 ## Project Layout
 
-TODO
-
 ```text
 .
-├── data/                       # Data folder (german-works and similarity)
-├── docs/assignment/            # Assignment README, solution CSV and PNG files
-├── notebooks/                  # Assignment solution notebook
-├── scripts/                    # Core python scripts (most of them by Sascha Szott `https://github.com/saschaszott/suma-tech`, some additions/changes by me)
+├── data/                       # Local data folder, assignment-data and pg-metadata
+├── docs/assignment/            # Assignment README
+├── notebooks/                  # Testing notebook
+├── scripts/                    # Core python scripts
+├── compose.yaml                # Podman Compose setup
 ├── environment.yaml            # Information on used environment
 └── README.md
 ```
