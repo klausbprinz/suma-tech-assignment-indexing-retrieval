@@ -41,6 +41,7 @@ Insgesamt 2435 Volltextdateien erfolgreich heruntergeladen (Anzahl Fehler: 20).
 
 He who reads the assignment in total ...
 
+```
 (base) k@Ixion:~/Dev/learning/bibinfo-suchmaschinentechnologie/suma-tech-assignment-indexing-retrieval/scripts/assignment$ python 02_fetch-works.py 
 Verarbeite Datei /home/k/Dev/learning/bibinfo-suchmaschinentechnologie/suma-tech-assignment-indexing-retrieval/data/assignment-data/ebook_ids.txt. Lade E-Book-IDs.
 Insgesamt 2455 E-Book-IDs gefunden.
@@ -90,7 +91,7 @@ Fehler beim Herunterladen der Datei von URL https://www.gutenberg.org/ebooks/171
 Insgesamt 0 Volltextdateien erfolgreich heruntergeladen (Anzahl Fehler: 20).
 Geladene IDs: [].
 IDs mit Fehlern beim Laden: ['38157', '15267', '25157', '31911', '36310', '29806', '33317', '32634', '30005', '11925', '33330', '33202', '29780', '32766', '5740', '38986', '34032', '31564', '33369', '17153']
-
+```
 
 It works but can be done better - check for empty file directly after loading it
 
@@ -105,8 +106,33 @@ Skript beendet.
 0 Dateien ohne gültige Start- und End-Marker. IDs: []
 ```
 
+---
+
 ## Create new Solr Core
 `podman-compose exec solr solr create -c pg_fulltexts`
 
-## Comments on 04_
+---
+
+## Comments on 04_create_schema.py
+
+---
+
+## Comments on 05_index_fulltexts.py
+
+Script Output
+```
+(suma-tech) k@Ixion:~/Dev/learning/bibinfo-suchmaschinentechnologie/suma-tech-assignment-indexing-retrieval/scripts/assignment$ python 05_index_fulltexts.py 
+INDEXING SOLR RECORDS...
+
+Successfully indexed batch of 1000 records (Total so far: 1000)...
+Successfully indexed batch of 1000 records (Total so far: 2000)...
+Successfully indexed final batch of 435 records.
+Issuing final commit to Solr...
+
+FINISHED INDEXING RECORDS
+Successfully processed: 2435
+Errors encountered: 0. IDs/Batches: []
+```
+
+---
 
