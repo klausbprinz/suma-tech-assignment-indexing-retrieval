@@ -4,7 +4,7 @@ author: "Klaus Prinz"
 domain: "learning"
 status: "active"
 createdDate: "2026-11-07"
-tags: [solr, solr schema, pysolr, project gutenberg, information retrieval, edismax, morelikethis, mlt, faceting, podman, podman-compose]
+tags: [solr, solr schema, pysolr, project gutenberg, information retrieval, edismax, morelikethis, mlt, podman, podman-compose]
 requester: ""
 ticketId: ""
 ---
