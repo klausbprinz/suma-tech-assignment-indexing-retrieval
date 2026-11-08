@@ -115,6 +115,8 @@ Skript beendet.
 
 ## Comments on 04_create_schema.py
 
+A lot of field types yet to get to know ...
+
 ---
 
 ## Comments on 05_index_fulltexts.py
@@ -136,3 +138,6 @@ Errors encountered: 0. IDs/Batches: []
 
 ---
 
+## Comments on 06_searcher.py
+
+f..ing amazing! That is a google style search box ...
