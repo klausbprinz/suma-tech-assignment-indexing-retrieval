@@ -105,5 +105,8 @@ Skript beendet.
 0 Dateien ohne gültige Start- und End-Marker. IDs: []
 ```
 
+## Create new Solr Core
+`podman-compose exec solr solr create -c pg_fulltexts`
+
 ## Comments on 04_
 
